@@ -1,0 +1,59 @@
+{% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'weatherapp/style.css' %}">
+
+<body class="mainbody">
+   <div class="container=fluid weatherform">
+       <div class="row">
+           <div class="col-sm-12">
+			   <form action="{% url 'getWeather' %}"  method="post">{% csrf_token %}
+	           <button type="submit" id="search" class="btn btn-default searchbtn" ><i class="fa fa-search center"></i></button>
+	           <input id="searchCity" name="searchCity" class="cityinput" type="text" placeholder="enter city in us" value="{{ current_city }}">
+	           <i class="fa fa-times center xicon"></i>
+	           </form>
+	        </div>
+       </div>
+	   {% if message %}
+	   <div class="row">
+		   <p><strong>{{ message }}</strong></p>
+	   </div>
+	   {% endif %}
+	   {% if todayWeather.foundCity %}
+	   <div class="row">
+		   <div class="col-sm-12">
+		       <p>City Found: {{ todayWeather.foundCity }}</p>
+		   </div>   
+	   </div>
+	   {% endif %}
+	   {% if todayWeather %}
+       <div class="row">
+           <div class="col-sm-6">
+       	       <p class="currenttemp">{{ todayWeather.temp }}&#8457;</p>
+       	   </div>
+       	   <div class="col-sm-6">
+       	       <p class="currentcondition">{{ todayWeather.condition }}</p>
+       	       <p class="currentHumidity">{{ todayWeather.humidity }}</p>
+       	   </div>
+       </div>
+       {% endif %}
+       <div class="row fiveDay">
+		   <ul id="forecastLst">
+			   {% for forecast in fiveDayForecast %}
+			   <li class="forecast">
+					<div>
+				        <p>{{ forecast.date }}</p>
+				        <img src={{ forecast.condition }}></img>
+				        <p><b>{{ forecast.highTemp }}</b></p>
+				        <p>{{ forecast.lowTemp }}</p>
+        	        </div>
+ 			   </li>
+ 		       {% endfor %}
+		   </ul>
+       </div>
+  </div>
+</body>

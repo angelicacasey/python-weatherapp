@@ -1,0 +1,75 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700);
+
+.mainbody {
+	background-color: #183968;
+	background-image: url(cloud1.png), url(cloud2.png);
+	background-position: 25% 50%, 75% 50%;
+	background-repeat: no-repeat, no-repeat;
+	color: white;
+	font-family: "Open Sans";
+    font-weight: 300;
+}
+
+.row {
+	padding-top: 10;
+}
+.weatherform {
+	position: fixed;
+	top: 50%;
+	left: 30%;
+	width: 50%;
+	background-color: rgba(54,124,214, .7);;
+}
+
+.searchbtn {
+	background-color: rgba(54,124,214, .4);;
+	margin-left: 10;
+}
+
+.cityinput {
+	background-color: rgba(54,124,214, .4);;
+	margin-left: -4px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    width: 75%;
+}
+
+.currenttemp {
+	font-size: 50;
+	padding: 10;
+	text-align: right;
+}
+
+.currentcondition {
+	padding-top: 25;
+	font-size: 15;
+}
+
+.currentHumidity {
+	font-size: 12;
+}
+
+.forecast {
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border-right: thick solid grey;
+}
+
+ul#forecastLst li {
+    float: left;
+    width: 20%;
+}
+
+.fiveDay {
+    margin-left: -35;
+    margin-right: 5px;
+}
+
+.xicon {
+    color: black;
+    font-size: 20;
+    float: right;
+    margin-right: 10;
+}
